@@ -6,8 +6,12 @@
 package seguridad.vista;
 
 
-import seguridad.modelo.daoCliente;
-import seguridad.controlador.clsCliente;
+import seguridad.modelo.daoProducto;
+import seguridad.controlador.clsProductos;
+import seguridad.modelo.daoLinea;
+import seguridad.controlador.clsLinea;
+import seguridad.modelo.daoMarca;
+import seguridad.controlador.clsMarca;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -26,51 +30,70 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         cbox_estado.addItem("suspendido");
     }
  
+    public void llenadoDeCombosLinea() {
+        daoLinea pDAO = new daoLinea();
+        List<clsLinea> ps = pDAO.select();
+        cbox_linea.addItem("Seleccione una linea");
+        for (int i = 0; i < ps.size(); i++) {
+            cbox_linea.addItem(ps.get(i).getnombrel());
+        }
+    }
+    
+     public void llenadoDeCombosMarca() {
+        daoMarca mDAO = new daoMarca();
+        List<clsMarca> ms = mDAO.select();
+        cbox_marca.addItem("Seleccione una marca");
+        for (int i = 0; i < ms.size(); i++) {
+            cbox_marca.addItem(ms.get(i).getnombrem());
+        }
+    }
+    
     
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("codigo");
         modelo.addColumn("nombre");
-        modelo.addColumn("direccion");
-        modelo.addColumn("nit");
-        modelo.addColumn("telefono");
-        modelo.addColumn("codigo vendedor");
+        modelo.addColumn("codigo linea");
+        modelo.addColumn("codigo marca");
         modelo.addColumn("estado");
-        daoCliente mDAO = new daoCliente();
-        List<clsCliente> m = mDAO.select();
+        modelo.addColumn("existencias");
+        
+        daoProducto mDAO = new daoProducto();
+        List<clsProductos> m = mDAO.select();
         tablaVendedores.setModel(modelo);
         String[] dato = new String[10];
         for (int i = 0; i < m.size(); i++) {
-            dato[0] = Integer.toString(m.get(i).getidc());
-            dato[1] = m.get(i).getnombrec();
-            dato[2] = m.get(i).getdireccionc();
-            dato[3] = m.get(i).getnitc();
-            dato[4] = m.get(i).gettelefonoc();
-            dato[5] = m.get(i).getcodic();
-            dato[6] = m.get(i).getestadoc();
+            dato[0] = Integer.toString(m.get(i).getidpr());
+            dato[1] = m.get(i).getnombrepr();
+            dato[2] = m.get(i).getcolineapr();
+            dato[3] = m.get(i).getcomarcapr();
+            dato[4] = m.get(i).getestadopr();
+            dato[5] = m.get(i).getexistenpr();
+        
 
             modelo.addRow(dato);
         }
     }
 
     public void buscarCliente() {
-        clsCliente cAConsultar = new clsCliente();
-        daoCliente cDAO = new daoCliente();
-        cAConsultar.setidc(Integer.parseInt(txtbuscado.getText()));
+        clsProductos cAConsultar = new clsProductos();
+        daoProducto cDAO = new daoProducto();
+        cAConsultar.setidpr(Integer.parseInt(txtbuscado.getText()));
         cAConsultar = cDAO.query(cAConsultar);
-        txtNombre.setText(cAConsultar.getnombrec());
-        txtDireccion.setText(cAConsultar.getdireccionc());
-        txtNit.setText(cAConsultar.getnitc());
-        txtTelefono.setText(cAConsultar.gettelefonoc());
-        txtCodigo.setText(cAConsultar.getcodic());
-        cbox_estado.setSelectedItem(cAConsultar.getestadoc());
+        txtNombre.setText(cAConsultar.getnombrepr());
+        cbox_linea.setSelectedItem(cAConsultar.getcolineapr());
+        cbox_marca.setSelectedItem(cAConsultar.getcomarcapr());
+        cbox_estado.setSelectedItem(cAConsultar.getestadopr());
+        txtExistencias.setText(cAConsultar.getexistenpr());
     }
 
     public frmMantenimientoProducto() {
         initComponents();
         llenadoDeTablas();
         estados();
+        llenadoDeCombosMarca();
+        llenadoDeCombosLinea();
     }
 
     /**
@@ -101,7 +124,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         cbox_estado = new javax.swing.JComboBox<>();
         label4 = new javax.swing.JLabel();
         label5 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
+        txtExistencias = new javax.swing.JTextField();
         label8 = new javax.swing.JLabel();
         cbox_marca = new javax.swing.JComboBox<>();
         cbox_linea = new javax.swing.JComboBox<>();
@@ -168,11 +191,11 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "codigo ", "nombre", "direccion", "nit", "telefono", "codigo vendedor", "estado"
+                "codigo ", "nombre", "codigo linea", "codigo marca", "estado", "existencias"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -196,7 +219,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
 
         label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label6.setText("estado");
-        getContentPane().add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
+        getContentPane().add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +235,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
                 cbox_estadoActionPerformed(evt);
             }
         });
-        getContentPane().add(cbox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 150, 20));
+        getContentPane().add(cbox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 150, 20));
 
         label4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label4.setText("Codigo linea");
@@ -222,14 +245,14 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         label5.setText("Codigo Marca");
         getContentPane().add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        txtTelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtTelefono.setOpaque(false);
-        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 150, -1));
+        txtExistencias.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtExistencias.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtExistencias.setOpaque(false);
+        getContentPane().add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 150, -1));
 
         label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label8.setText("Existencias");
-        getContentPane().add(label8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        getContentPane().add(label8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
         cbox_marca.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         cbox_marca.addActionListener(new java.awt.event.ActionListener() {
@@ -253,22 +276,21 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         
-        daoCliente eDAO = new daoCliente();
-        clsCliente eAEliminar = new clsCliente();
-        eAEliminar.setidc(Integer.parseInt(txtbuscado.getText()));
+        daoProducto eDAO = new daoProducto();
+        clsProductos eAEliminar = new clsProductos();
+        eAEliminar.setidpr(Integer.parseInt(txtbuscado.getText()));
         eDAO.delete(eAEliminar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        daoCliente eDAO = new daoCliente();
-        clsCliente eAInsertar = new clsCliente();
-        eAInsertar.setnombrec(txtNombre.getText());
-        eAInsertar.setdireccionc(txtDireccion.getText());
-        eAInsertar.setnitc(txtNit.getText());
-        eAInsertar.settelefonoc(txtTelefono.getText());
-        eAInsertar.setcodic(txtCodigo.getText());
-        eAInsertar.setestadoc(cbox_estado.getSelectedItem().toString());
+        daoProducto eDAO = new daoProducto();
+        clsProductos eAInsertar = new clsProductos();
+        eAInsertar.setnombrepr(txtNombre.getText());
+        eAInsertar.setcolineapr(cbox_linea.getSelectedItem().toString());
+        eAInsertar.setcomarcapr(cbox_marca.getSelectedItem().toString());
+        eAInsertar.setestadopr(cbox_estado.getSelectedItem().toString());
+        eAInsertar.setexistenpr(txtExistencias.getText());
        
         eDAO.insert(eAInsertar);
         llenadoDeTablas();
@@ -281,15 +303,14 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        daoCliente eDAO = new daoCliente();
-        clsCliente eAActualizar = new clsCliente();
-        eAActualizar.setidc(Integer.parseInt(txtbuscado.getText()));
-        eAActualizar.setnombrec(txtNombre.getText());
-        eAActualizar.setdireccionc(txtDireccion.getText());
-        eAActualizar.setnitc(txtNit.getText());
-        eAActualizar.settelefonoc(txtTelefono.getText());
-        eAActualizar.setcodic(txtCodigo.getText());
-        eAActualizar.setestadoc(cbox_estado.getSelectedItem().toString());
+        daoProducto eDAO = new daoProducto();
+        clsProductos eAActualizar = new clsProductos();
+        eAActualizar.setidpr(Integer.parseInt(txtbuscado.getText()));
+        eAActualizar.setnombrepr(txtNombre.getText());
+        eAActualizar.setcolineapr(cbox_linea.getSelectedItem().toString());
+        eAActualizar.setcomarcapr(cbox_marca.getSelectedItem().toString());
+        eAActualizar.setestadopr(cbox_estado.getSelectedItem().toString());
+        eAActualizar.setexistenpr(txtExistencias.getText());
         eDAO.update(eAActualizar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -315,10 +336,9 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
 
 
         txtNombre.setText("");
-        txtDireccion.setText("");
-        txtNit.setText("");
-        txtTelefono.setText("");
-        txtCodigo.setText("");
+         cbox_linea.setSelectedIndex(0);
+          cbox_marca.setSelectedIndex(0);
+        txtExistencias.setText("");
         cbox_estado.setSelectedIndex(0);
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
@@ -362,8 +382,8 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaVendedores;
+    private javax.swing.JTextField txtExistencias;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }
