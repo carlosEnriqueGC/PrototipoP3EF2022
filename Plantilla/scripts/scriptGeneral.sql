@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS tbl_vendedor (
 	direccionv VARCHAR(45) NOT NULL,
 	nitv VARCHAR(45) NOT NULL,
 	telefonov VARCHAR(45) NOT NULL,
-	codivendev VARCHAR(45) NOT NULL,
 	estadov VARCHAR(45) NOT NULL,
 	
 	PRIMARY KEY (idv) )

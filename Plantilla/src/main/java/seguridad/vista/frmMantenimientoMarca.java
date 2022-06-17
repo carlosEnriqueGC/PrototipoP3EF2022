@@ -93,7 +93,7 @@ public class frmMantenimientoMarca extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Mantenimiento 5");
+        setTitle("Mantenimiento Marca");
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
