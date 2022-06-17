@@ -10,53 +10,82 @@ package seguridad.controlador;
  * @author visitante
  */
 public class clsProductos {
-    int id3;
-    String nombre3;
-    String estado3;
+     int idpr;
+    String nombrepr;
+    String colineapr;
+    String comarcapr;
+    String estadopr;
+    String existenpr;
 
             
 
     public clsProductos(int id) {
-        this.id3 = id;
+        this.idpr = id;
     }
 
     public clsProductos() {
     }
 
-    public clsProductos(String nombre, String estado) {
-        this.nombre3 = nombre;
-        this.estado3 = estado;
+    public clsProductos(String nombre, String estado, String colinea, String comarca, String existen) {
+        this.nombrepr = nombre;
+        this.colineapr = colinea;
+        this.comarcapr = comarca;
+        this.estadopr = estado;
+        this.existenpr = existen;
          
     }
 
-    public int getid3() {
-        return id3;
+    public int getidpr() {
+        return idpr;
     }
 
-    public void setid3(int id) {
-        this.id3 = id;
+    public void setidpr(int id) {
+        this.idpr = id;
     }
 
-    public String getnombre3() {
-        return nombre3;
+    public String getnombrepr() {
+        return nombrepr;
     }
 
-    public void setnombre3(String nombre) {
-        this.nombre3 = nombre;
+    public void setnombrepr(String nombre) {
+        this.nombrepr = nombre;
     }
 
-    public String getestado3() {
-        return estado3;
+      public String getcolineapr() {
+        return colineapr;
     }
 
-    public void setestado3(String estado) {
-        this.estado3 = estado;
+    public void setcolineapr(String colinea) {
+        this.colineapr = colinea;
+    }
+    
+      public String getcomarcapr() {
+        return comarcapr;
     }
 
+    public void setcomarcapr(String comarca) {
+        this.comarcapr = comarca;
+    }
+    
+    public String getestadopr() {
+        return estadopr;
+    }
+
+    public void setestadopr(String estado) {
+        this.estadopr = estado;
+    }
+    
+     public String getexistenpr() {
+        return existenpr;
+    }
+
+    public void setexistenpr(String existen) {
+        this.existenpr = existen;
+    }
     
     @Override
     public String toString() {
-        return "tbl_mantenimiento3{" + "id3=" + id3 + ", nombre3=" + nombre3 + ", estado3=" + estado3 +'}';
+       return "tbl_productos{" + "idpr=" + idpr + ", nombrepr=" + nombrepr + ", colineapr="+ colineapr +", comarcapr="+ comarcapr + ", estadopr="+ estadopr + ", existenpr="+ existenpr +'}';
     }
     
 

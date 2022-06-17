@@ -40,12 +40,12 @@ public class mdiGeneral extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        mantenimiento0 = new javax.swing.JMenuItem();
-        Mantenimiento1 = new javax.swing.JMenuItem();
-        Mantenimiento2 = new javax.swing.JMenuItem();
-        mantenimiento3 = new javax.swing.JMenuItem();
-        mantenimiento4 = new javax.swing.JMenuItem();
-        mantenimiento5 = new javax.swing.JMenuItem();
+        mantenimientoUsuario = new javax.swing.JMenuItem();
+        MantenimientoCliente = new javax.swing.JMenuItem();
+        MantenimientoProveedor = new javax.swing.JMenuItem();
+        mantenimientoProducto = new javax.swing.JMenuItem();
+        mantenimientoLinea = new javax.swing.JMenuItem();
+        mantenimientoMarca = new javax.swing.JMenuItem();
         jM_MantenimientopApps = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
@@ -73,53 +73,53 @@ public class mdiGeneral extends javax.swing.JFrame {
 
         jMenu4.setText("Catalogos");
 
-        mantenimiento0.setText("Mantenimiento Usuarios");
-        mantenimiento0.addActionListener(new java.awt.event.ActionListener() {
+        mantenimientoUsuario.setText("Mantenimiento Usuarios");
+        mantenimientoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimiento0ActionPerformed(evt);
+                mantenimientoUsuarioActionPerformed(evt);
             }
         });
-        jMenu4.add(mantenimiento0);
+        jMenu4.add(mantenimientoUsuario);
 
-        Mantenimiento1.setText("Mantenimiento Cliente");
-        Mantenimiento1.addActionListener(new java.awt.event.ActionListener() {
+        MantenimientoCliente.setText("Mantenimiento Cliente");
+        MantenimientoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mantenimiento1ActionPerformed(evt);
+                MantenimientoClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(Mantenimiento1);
+        jMenu4.add(MantenimientoCliente);
 
-        Mantenimiento2.setText("Mantenimiento 2");
-        Mantenimiento2.addActionListener(new java.awt.event.ActionListener() {
+        MantenimientoProveedor.setText("Mantenimiento proveedor");
+        MantenimientoProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mantenimiento2ActionPerformed(evt);
+                MantenimientoProveedorActionPerformed(evt);
             }
         });
-        jMenu4.add(Mantenimiento2);
+        jMenu4.add(MantenimientoProveedor);
 
-        mantenimiento3.setText("Mantenimiento 3");
-        mantenimiento3.addActionListener(new java.awt.event.ActionListener() {
+        mantenimientoProducto.setText("Mantenimiento Producto");
+        mantenimientoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimiento3ActionPerformed(evt);
+                mantenimientoProductoActionPerformed(evt);
             }
         });
-        jMenu4.add(mantenimiento3);
+        jMenu4.add(mantenimientoProducto);
 
-        mantenimiento4.setText("Mantenimiento 4");
-        mantenimiento4.addActionListener(new java.awt.event.ActionListener() {
+        mantenimientoLinea.setText("Mantenimiento Linea");
+        mantenimientoLinea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimiento4ActionPerformed(evt);
+                mantenimientoLineaActionPerformed(evt);
             }
         });
-        jMenu4.add(mantenimiento4);
+        jMenu4.add(mantenimientoLinea);
 
-        mantenimiento5.setText("Mantenimiento 5");
-        mantenimiento5.addActionListener(new java.awt.event.ActionListener() {
+        mantenimientoMarca.setText("Mantenimiento Marca");
+        mantenimientoMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimiento5ActionPerformed(evt);
+                mantenimientoMarcaActionPerformed(evt);
             }
         });
-        jMenu4.add(mantenimiento5);
+        jMenu4.add(mantenimientoMarca);
 
         jMenuBar1.add(jMenu4);
 
@@ -148,15 +148,15 @@ public class mdiGeneral extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mantenimiento0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimiento0ActionPerformed
+    private void mantenimientoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoUsuarioActionPerformed
         frmMantenimientoUsuarios ventana = new frmMantenimientoUsuarios();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);        // TODO add your handling code here:
-    }//GEN-LAST:event_mantenimiento0ActionPerformed
+    }//GEN-LAST:event_mantenimientoUsuarioActionPerformed
 
-    private void Mantenimiento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mantenimiento1ActionPerformed
+    private void MantenimientoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoClienteActionPerformed
         // TODO add your handling code here:
          frmMantenimientoClientes ventana = new frmMantenimientoClientes();
         jDesktopPane1.add(ventana);
@@ -165,47 +165,47 @@ public class mdiGeneral extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
         
         
-    }//GEN-LAST:event_Mantenimiento1ActionPerformed
+    }//GEN-LAST:event_MantenimientoClienteActionPerformed
 
-    private void Mantenimiento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mantenimiento2ActionPerformed
+    private void MantenimientoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoProveedorActionPerformed
         // TODO add your handling code here:
-              frmMantenimiento2 ventana = new frmMantenimiento2();
+              frmMantenimientoProveedores ventana = new frmMantenimientoProveedores();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
         
-    }//GEN-LAST:event_Mantenimiento2ActionPerformed
+    }//GEN-LAST:event_MantenimientoProveedorActionPerformed
 
-    private void mantenimiento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimiento3ActionPerformed
+    private void mantenimientoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoProductoActionPerformed
         // TODO add your handling code here:
-           frmMantenimiento3 ventana = new frmMantenimiento3();
+           frmMantenimientoProducto ventana = new frmMantenimientoProducto();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
         
-    }//GEN-LAST:event_mantenimiento3ActionPerformed
+    }//GEN-LAST:event_mantenimientoProductoActionPerformed
 
-    private void mantenimiento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimiento4ActionPerformed
+    private void mantenimientoLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoLineaActionPerformed
         // TODO add your handling code here:
-           frmMantenimiento4 ventana = new frmMantenimiento4();
+           frmMantenimientoLinea ventana = new frmMantenimientoLinea();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
         
-    }//GEN-LAST:event_mantenimiento4ActionPerformed
+    }//GEN-LAST:event_mantenimientoLineaActionPerformed
 
-    private void mantenimiento5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimiento5ActionPerformed
+    private void mantenimientoMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoMarcaActionPerformed
         // TODO add your handling code here:
-           frmMantenimiento5 ventana = new frmMantenimiento5();
+           frmMantenimientoMarca ventana = new frmMantenimientoMarca();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
         
-    }//GEN-LAST:event_mantenimiento5ActionPerformed
+    }//GEN-LAST:event_mantenimientoMarcaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,8 +250,8 @@ public class mdiGeneral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Mantenimiento1;
-    private javax.swing.JMenuItem Mantenimiento2;
+    private javax.swing.JMenuItem MantenimientoCliente;
+    private javax.swing.JMenuItem MantenimientoProveedor;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jM_MantenimientopApps;
     private javax.swing.JMenu jMenu2;
@@ -262,9 +262,9 @@ public class mdiGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem mantenimiento0;
-    private javax.swing.JMenuItem mantenimiento3;
-    private javax.swing.JMenuItem mantenimiento4;
-    private javax.swing.JMenuItem mantenimiento5;
+    private javax.swing.JMenuItem mantenimientoLinea;
+    private javax.swing.JMenuItem mantenimientoMarca;
+    private javax.swing.JMenuItem mantenimientoProducto;
+    private javax.swing.JMenuItem mantenimientoUsuario;
     // End of variables declaration//GEN-END:variables
 }
