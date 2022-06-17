@@ -1,0 +1,59 @@
+CREATE SCHEMA IF NOT EXISTS `bdPlantilla` DEFAULT CHARACTER SET utf8 ;
+USE `bdPlantilla` ;
+
+CREATE TABLE IF NOT EXISTS tbl_usuario (
+	usuid INT NOT NULL AUTO_INCREMENT,
+	usunombre VARCHAR(45) NOT NULL,
+	usucontrasena VARCHAR(25) NOT NULL,
+	usuultimasesion DATE,
+	usuestatus VARCHAR(1) NOT NULL,
+	usunombrereal VARCHAR(60),
+	usucorreoe VARCHAR(60),
+	usutelefono VARCHAR(25),
+	usudireccion VARCHAR(80),
+	PRIMARY KEY (usuid) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Mantenimiento1 (
+	id1 INT NOT NULL AUTO_INCREMENT,
+	nombre1 VARCHAR(45) NOT NULL,
+	estado1 VARCHAR(45) NOT NULL,
+	
+	PRIMARY KEY (id1) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Mantenimiento2 (
+	id2 INT NOT NULL AUTO_INCREMENT,
+	nombre2 VARCHAR(45) NOT NULL,
+	estado2 VARCHAR(45) NOT NULL,
+	
+	PRIMARY KEY (id2) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Mantenimiento3 (
+	id3 INT NOT NULL AUTO_INCREMENT,
+	nombre3 VARCHAR(45) NOT NULL,
+	estado3 VARCHAR(45) NOT NULL,
+	
+	PRIMARY KEY (id3) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Mantenimiento4 (
+	id4 INT NOT NULL AUTO_INCREMENT,
+	nombre4 VARCHAR(45) NOT NULL,
+	estado4 VARCHAR(45) NOT NULL,
+	
+	PRIMARY KEY (id4) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Mantenimiento5 (
+	id5 INT NOT NULL AUTO_INCREMENT,
+	nombre5 VARCHAR(45) NOT NULL,
+	estado5 VARCHAR(45) NOT NULL,
+	
+	PRIMARY KEY (id5) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+
+
+

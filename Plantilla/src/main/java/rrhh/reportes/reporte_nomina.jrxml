@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="936" pageHeight="595" orientation="Landscape" columnWidth="896" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32a7fcd6-0684-4551-a3e7-cc78870fac71">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `tbl_generacion`]]>
+	</queryString>
+	<field name="geid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="geinicial" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gefinal" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="genombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="geconcepto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="geigss" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="geisr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="geotros" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gevalor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="330" y="23" width="300" height="37" uuid="79930566-4e87-4be8-aa85-821c98f30078"/>
+				<textElement markup="none">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de nomina]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="82531ec9-dedc-4223-b5fc-aa13f8b6ff9d"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["id"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="2" width="100" height="20" uuid="f300b67c-3296-4efc-b8a6-44897e395e16"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["fecha inicial"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="2" width="100" height="20" uuid="4fb5a515-ce3e-4e2b-bbed-f8b3ce5eb041"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["fecha final"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="2" width="100" height="20" uuid="254e9ca0-f528-4de1-b4b1-b581faadf8a3"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["nombre"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="2" width="100" height="20" uuid="25004cb9-0fac-4c11-96f1-a2c1cf410f4b"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["concepto"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="2" width="100" height="20" uuid="fe9db9d6-baca-48a0-9063-78d8924061a3"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["igss"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="2" width="100" height="20" uuid="969675cd-3f8e-4e67-8852-30c074879104"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["isr"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="703" y="2" width="100" height="20" uuid="48e7fbbf-ad2c-4706-8f86-951be13953b9"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["otros"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="801" y="2" width="100" height="20" uuid="862045d9-fb7d-4b6c-8868-ba8b12699417"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["valor"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b48e6378-d509-4795-b78f-e80abd63495d"/>
+				<textFieldExpression><![CDATA[$F{geid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="b000f56b-9ede-4551-a62e-ba9aaaa28e2f"/>
+				<textFieldExpression><![CDATA[$F{geinicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="1" width="100" height="20" uuid="6d969d1f-16ed-44a4-a04d-d48a9c586fc5"/>
+				<textFieldExpression><![CDATA[$F{gefinal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="1" width="100" height="20" uuid="7e47a2bd-0fbb-4f87-935f-060303359988"/>
+				<textFieldExpression><![CDATA[$F{genombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="1" width="100" height="20" uuid="5aa36532-1d07-4217-b17b-9a5434626d4c"/>
+				<textFieldExpression><![CDATA[$F{geconcepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="0" width="100" height="20" uuid="6b0d23a6-66f1-4ff3-847c-671434aa6115"/>
+				<textFieldExpression><![CDATA[$F{geigss}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="1" width="100" height="20" uuid="de82e1b8-3114-46e0-8e4e-8c12e52b74c1"/>
+				<textFieldExpression><![CDATA[$F{geisr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="703" y="2" width="100" height="20" uuid="2e88c15c-4ac2-475a-b620-0167794cedc0"/>
+				<textFieldExpression><![CDATA[$F{geotros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="801" y="2" width="100" height="20" uuid="20514b23-76bf-4fd8-9230-7ed0f4e4c303"/>
+				<textFieldExpression><![CDATA[$F{gevalor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
