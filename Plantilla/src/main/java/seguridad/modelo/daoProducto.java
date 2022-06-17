@@ -17,7 +17,7 @@ import java.util.List;
 public class daoProducto {
 
     private static final String SQL_SELECT = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr FROM tbl_productos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_productos(idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr) VALUES(?, ?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO tbl_productos(nombrepr, colineapr, comarcapr, estadopr, existenpr) VALUES( ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE tbl_productos SET nombrepr=?, colineapr=?, comarcapr=?,estadopr=?, existenpr=? WHERE idpr = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_productos WHERE idpr=?";
     private static final String SQL_QUERY = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr FROM tbl_productos WHERE idpr=?";
