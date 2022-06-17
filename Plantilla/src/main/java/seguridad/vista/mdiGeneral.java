@@ -81,7 +81,7 @@ public class mdiGeneral extends javax.swing.JFrame {
         });
         jMenu4.add(mantenimiento0);
 
-        Mantenimiento1.setText("Mantenimiento 1");
+        Mantenimiento1.setText("Mantenimiento Cliente");
         Mantenimiento1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Mantenimiento1ActionPerformed(evt);
@@ -158,7 +158,7 @@ public class mdiGeneral extends javax.swing.JFrame {
 
     private void Mantenimiento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mantenimiento1ActionPerformed
         // TODO add your handling code here:
-         frmMantenimiento1 ventana = new frmMantenimiento1();
+         frmMantenimientoClientes ventana = new frmMantenimientoClientes();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();

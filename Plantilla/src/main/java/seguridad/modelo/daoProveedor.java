@@ -5,7 +5,7 @@
  */
 package seguridad.modelo;
 
-import seguridad.controlador.clsMantenimiento2;
+import seguridad.controlador.clsProveedor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,35 +14,41 @@ import java.util.List;
  *
  * @author visitante
  */
-public class daoMantenimiento2 {
+public class daoProveedor {
 
-    private static final String SQL_SELECT = "SELECT id2, nombre2, estado2 FROM tbl_mantenimiento2";
-    private static final String SQL_INSERT = "INSERT INTO tbl_mantenimiento2(nombre2, estado2) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_mantenimiento2 SET nombre2=?, estado2=? WHERE id2 = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_mantenimiento2 WHERE id2=?";
-    private static final String SQL_QUERY = "SELECT id2, nombre2, estado2 FROM tbl_mantenimiento2 WHERE id2=?";
-    private static final String SQL_QUERYN = "SELECT id2, nombre2, estado2 FROM tbl_mantenimiento2 WHERE nombre2=?";    
+    private static final String SQL_SELECT = "SELECT idp, nombrep, direccionp, telefonop, nitp, estadop FROM tbl_proveedor";
+    private static final String SQL_INSERT = "INSERT INTO tbl_proveedor(nombrep, direccionp, telefonop, nitp, estadop) VALUES(?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_proveedor SET nombrep=?, direccionp=?, telefonop=?, nitp=?, estadop=? WHERE idp = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_proveedor WHERE idp=?";
+    private static final String SQL_QUERY = "SELECT idp, nombrep, direccionp, telefonop, nitp, estadop FROM tbl_proveedor WHERE idp=?";
+    private static final String SQL_QUERYN = "SELECT idp, nombrep, direccionp, telefonop, nitp, estadop FROM tbl_proveedor WHERE nombrep=?";    
 
-    public List<clsMantenimiento2> select() {
+    public List<clsProveedor> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        clsMantenimiento2 usuario = null;
-        List<clsMantenimiento2> usuarios = new ArrayList<clsMantenimiento2>();
+        clsProveedor usuario = null;
+        List<clsProveedor> usuarios = new ArrayList<clsProveedor>();
         try {
             conn = clsConexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("id2");
-                String nombre = rs.getString("nombre2");
-                String estado = rs.getString("estado2");
+               int id = rs.getInt("idp");
+                String nombre = rs.getString("nombrep");
+                String direccion = rs.getString("direccionp");
+                String telefono = rs.getString("telefonop");
+                String nit = rs.getString("nitp");
+                String estado = rs.getString("estadop");
                 
 
-                usuario = new clsMantenimiento2();
-                usuario.setid2(id);
-                usuario.setnombre2(nombre);
-                usuario.setestado2(estado);
+                usuario = new clsProveedor();
+                usuario.setidp(id);
+                usuario.setnombrep(nombre);
+                usuario.setdireccionp(direccion);
+                usuario.settelefonop(telefono);
+                usuario.setnitp(nit);
+                usuario.setestadop(estado);
                 usuarios.add(usuario);
             }
 
@@ -57,15 +63,18 @@ public class daoMantenimiento2 {
         return usuarios;
     }
 
-    public int insert(clsMantenimiento2 usuario) {
+    public int insert(clsProveedor usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = clsConexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, usuario.getnombre2());
-            stmt.setString(2, usuario.getestado2());
+            stmt.setString(1, usuario.getnombrep());
+             stmt.setString(2, usuario.getdireccionp());
+               stmt.setString(3, usuario.gettelefonop());
+                stmt.setString(4, usuario.getnitp());
+                 stmt.setString(5, usuario.getestadop());
                
 
             System.out.println("ejecutando query:" + SQL_INSERT);
@@ -81,7 +90,7 @@ public class daoMantenimiento2 {
         return rows;
     }
 
-    public int update(clsMantenimiento2 usuario) {
+    public int update(clsProveedor usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -89,10 +98,12 @@ public class daoMantenimiento2 {
             conn = clsConexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, usuario.getnombre2());
-            stmt.setString(2, usuario.getestado2());
-               
-            stmt.setInt(3, usuario.getid2());
+            stmt.setString(1, usuario.getnombrep());
+             stmt.setString(2, usuario.getdireccionp());
+               stmt.setString(3, usuario.gettelefonop());
+                stmt.setString(4, usuario.getnitp());
+                 stmt.setString(5, usuario.getestadop());   
+                  stmt.setInt(6, usuario.getidp());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -107,7 +118,7 @@ public class daoMantenimiento2 {
         return rows;
     }
 
-    public int delete(clsMantenimiento2 usuario) {
+    public int delete(clsProveedor usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -116,7 +127,7 @@ public class daoMantenimiento2 {
             conn = clsConexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, usuario.getid2());
+            stmt.setInt(1, usuario.getidp());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
@@ -129,7 +140,7 @@ public class daoMantenimiento2 {
         return rows;
     }
 
-    public clsMantenimiento2 query(clsMantenimiento2 usuario) 
+    public clsProveedor query(clsProveedor usuario) 
     {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -138,19 +149,25 @@ public class daoMantenimiento2 {
             conn = clsConexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_QUERY);
             stmt = conn.prepareStatement(SQL_QUERY);
-            stmt.setInt(1, usuario.getid2());
+            stmt.setInt(1, usuario.getidp());
             rs = stmt.executeQuery();
             while (rs.next()) {
                
-                int id = rs.getInt("id2");
-                String nombre = rs.getString("nombre2");
-                String estado = rs.getString("estado2");
+               int id = rs.getInt("idp");
+                String nombre = rs.getString("nombrep");
+                String direccion = rs.getString("direccionp");
+                String telefono = rs.getString("telefonop");
+                String nit = rs.getString("nitp");
+                String estado = rs.getString("estadop");
                 
 
-                usuario = new clsMantenimiento2();
-                usuario.setid2(id);
-                usuario.setnombre2(nombre);
-                usuario.setestado2(estado);
+                usuario = new clsProveedor();
+                usuario.setidp(id);
+                usuario.setnombrep(nombre);
+                usuario.setdireccionp(direccion);
+                usuario.settelefonop(telefono);
+                usuario.setnitp(nit);
+                usuario.setestadop(estado);
                 
             }
             //System.out.println("Registros buscado:" + persona);
@@ -165,7 +182,7 @@ public class daoMantenimiento2 {
         //return personas;  // Si se utiliza un ArrayList
         return usuario;
     }
-public clsMantenimiento2 queryn(clsMantenimiento2 usuario) {
+public clsProveedor queryn(clsProveedor usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -173,19 +190,25 @@ public clsMantenimiento2 queryn(clsMantenimiento2 usuario) {
             conn = clsConexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_QUERY);
             stmt = conn.prepareStatement(SQL_QUERYN);
-            stmt.setString(1, usuario.getnombre2());
+            stmt.setString(1, usuario.getnombrep());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 
-                int id = rs.getInt("id2");
-                String nombre = rs.getString("nombre2");
-                String estado = rs.getString("estado2");
+                int id = rs.getInt("idp");
+                String nombre = rs.getString("nombrep");
+                String direccion = rs.getString("direccionp");
+                String telefono = rs.getString("telefonop");
+                String nit = rs.getString("nitp");
+                String estado = rs.getString("estadop");
                 
 
-                usuario = new clsMantenimiento2();
-                usuario.setid2(id);
-                usuario.setnombre2(nombre);
-                usuario.setestado2(estado);
+                usuario = new clsProveedor();
+                usuario.setidp(id);
+                usuario.setnombrep(nombre);
+                usuario.setdireccionp(direccion);
+                usuario.settelefonop(telefono);
+                usuario.setnitp(nit);
+                usuario.setestadop(estado);
                 
             }
             //System.out.println("Registros buscado:" + persona);

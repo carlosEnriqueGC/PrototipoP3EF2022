@@ -3,7 +3,7 @@ package seguridad.modelo;
 import java.sql.*;
 
 public class clsConexion {
-    private static final String JDBC_URL = "jdbc:mysql://localhost/bdPlantilla?useSSL=false&serverTimezone=UTC";
+    private static final String JDBC_URL = "jdbc:mysql://localhost/sic?useSSL=false&serverTimezone=UTC";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASS = "";
    

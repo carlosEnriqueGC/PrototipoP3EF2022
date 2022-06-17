@@ -5,7 +5,7 @@
  */
 package seguridad.modelo;
 
-import seguridad.controlador.clsMantenimiento3;
+import seguridad.controlador.clsProductos;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +23,12 @@ public class daoMantenimiento3 {
     private static final String SQL_QUERY = "SELECT id3, nombre3, estado3 FROM tbl_mantenimiento3 WHERE id3=?";
     private static final String SQL_QUERYN = "SELECT id3, nombre3, estado3 FROM tbl_mantenimiento3 WHERE nombre3=?";    
 
-    public List<clsMantenimiento3> select() {
+    public List<clsProductos> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        clsMantenimiento3 usuario = null;
-        List<clsMantenimiento3> usuarios = new ArrayList<clsMantenimiento3>();
+        clsProductos usuario = null;
+        List<clsProductos> usuarios = new ArrayList<clsProductos>();
         try {
             conn = clsConexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
@@ -39,7 +39,7 @@ public class daoMantenimiento3 {
                 String estado = rs.getString("estado3");
                 
 
-                usuario = new clsMantenimiento3();
+                usuario = new clsProductos();
                 usuario.setid3(id);
                 usuario.setnombre3(nombre);
                 usuario.setestado3(estado);
@@ -57,7 +57,7 @@ public class daoMantenimiento3 {
         return usuarios;
     }
 
-    public int insert(clsMantenimiento3 usuario) {
+    public int insert(clsProductos usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -81,7 +81,7 @@ public class daoMantenimiento3 {
         return rows;
     }
 
-    public int update(clsMantenimiento3 usuario) {
+    public int update(clsProductos usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -107,7 +107,7 @@ public class daoMantenimiento3 {
         return rows;
     }
 
-    public int delete(clsMantenimiento3 usuario) {
+    public int delete(clsProductos usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -129,7 +129,7 @@ public class daoMantenimiento3 {
         return rows;
     }
 
-    public clsMantenimiento3 query(clsMantenimiento3 usuario) 
+    public clsProductos query(clsProductos usuario) 
     {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -147,7 +147,7 @@ public class daoMantenimiento3 {
                 String estado = rs.getString("estado3");
                 
 
-                usuario = new clsMantenimiento3();
+                usuario = new clsProductos();
                 usuario.setid3(id);
                 usuario.setnombre3(nombre);
                 usuario.setestado3(estado);
@@ -165,7 +165,7 @@ public class daoMantenimiento3 {
         //return personas;  // Si se utiliza un ArrayList
         return usuario;
     }
-public clsMantenimiento3 queryn(clsMantenimiento3 usuario) {
+public clsProductos queryn(clsProductos usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -182,7 +182,7 @@ public clsMantenimiento3 queryn(clsMantenimiento3 usuario) {
                 String estado = rs.getString("estado3");
                 
 
-                usuario = new clsMantenimiento3();
+                usuario = new clsProductos();
                 usuario.setid3(id);
                 usuario.setnombre3(nombre);
                 usuario.setestado3(estado);

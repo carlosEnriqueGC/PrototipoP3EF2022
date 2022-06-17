@@ -9,21 +9,21 @@ package seguridad.controlador;
  *
  * @author visitante
  */
-public class clsMantenimiento3 {
+public class clsProductos {
     int id3;
     String nombre3;
     String estado3;
 
             
 
-    public clsMantenimiento3(int id) {
+    public clsProductos(int id) {
         this.id3 = id;
     }
 
-    public clsMantenimiento3() {
+    public clsProductos() {
     }
 
-    public clsMantenimiento3(String nombre, String estado) {
+    public clsProductos(String nombre, String estado) {
         this.nombre3 = nombre;
         this.estado3 = estado;
          
