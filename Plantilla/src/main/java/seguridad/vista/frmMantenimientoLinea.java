@@ -93,7 +93,7 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Mantenimiento 4");
+        setTitle("Mantenimiento Linea");
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

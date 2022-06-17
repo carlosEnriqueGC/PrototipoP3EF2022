@@ -6,8 +6,8 @@
 package seguridad.vista;
 
 
-import seguridad.modelo.daoProveedor;
-import seguridad.controlador.clsProveedor;
+import seguridad.modelo.daoVendedor;
+import seguridad.controlador.clsVendedor;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -16,7 +16,7 @@ import java.io.File;
  *
  * @author visitante
  */
-public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
+public class frmMantenimientoVendedores extends javax.swing.JInternalFrame {
 
 
     public void estados() {    
@@ -33,38 +33,38 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
         modelo.addColumn("codigo");
         modelo.addColumn("nombre");
         modelo.addColumn("direccion");
-        modelo.addColumn("telefono");
         modelo.addColumn("nit");
+        modelo.addColumn("telefono");
         modelo.addColumn("estado");
-        daoProveedor mDAO = new daoProveedor();
-        List<clsProveedor> m = mDAO.select();
+        daoVendedor mDAO = new daoVendedor();
+        List<clsVendedor> m = mDAO.select();
         tablaVendedores.setModel(modelo);
         String[] dato = new String[10];
         for (int i = 0; i < m.size(); i++) {
-            dato[0] = Integer.toString(m.get(i).getidp());
-            dato[1] = m.get(i).getnombrep();
-            dato[2] = m.get(i).getdireccionp();
-            dato[3] = m.get(i).gettelefonop();
-            dato[4] = m.get(i).getnitp();
-            dato[5] = m.get(i).getestadop();
+            dato[0] = Integer.toString(m.get(i).getidv());
+            dato[1] = m.get(i).getnombrev();
+            dato[2] = m.get(i).getdireccionv();
+            dato[3] = m.get(i).getnitv();
+            dato[4] = m.get(i).gettelefonov();
+            dato[5] = m.get(i).getestadov();
 
             modelo.addRow(dato);
         }
     }
 
     public void buscarCliente() {
-        clsProveedor cAConsultar = new clsProveedor();
-        daoProveedor cDAO = new daoProveedor();
-        cAConsultar.setidp(Integer.parseInt(txtbuscado.getText()));
+        clsVendedor cAConsultar = new clsVendedor();
+        daoVendedor cDAO = new daoVendedor();
+        cAConsultar.setidv(Integer.parseInt(txtbuscado.getText()));
         cAConsultar = cDAO.query(cAConsultar);
-        txtNombre.setText(cAConsultar.getnombrep());
-        txtDireccion.setText(cAConsultar.getdireccionp());
-        txtTelefono.setText(cAConsultar.gettelefonop());
-        txtNit.setText(cAConsultar.getnitp());
-        cbox_estado.setSelectedItem(cAConsultar.getestadop());
+        txtNombre.setText(cAConsultar.getnombrev());
+        txtDireccion.setText(cAConsultar.getdireccionv());
+        txtNit.setText(cAConsultar.getnitv());
+        txtTelefono.setText(cAConsultar.gettelefonov());
+        cbox_estado.setSelectedItem(cAConsultar.getestadov());
     }
 
-    public frmMantenimientoProveedores() {
+    public frmMantenimientoVendedores() {
         initComponents();
         llenadoDeTablas();
         estados();
@@ -109,7 +109,7 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Mantenimiento Proveedores");
+        setTitle("Mantenimiento Clientes");
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -165,7 +165,7 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "codigo ", "nombre", "direccion", "telefono", "nit", "estado"
+                "codigo ", "nombre", "direccion", "nit", "telefono", "estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -193,7 +193,7 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
 
         label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label6.setText("estado");
-        getContentPane().add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 20));
+        getContentPane().add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 20));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +209,7 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
                 cbox_estadoActionPerformed(evt);
             }
         });
-        getContentPane().add(cbox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 150, 20));
+        getContentPane().add(cbox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 150, 20));
 
         label4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label4.setText("Direccion");
@@ -222,21 +222,21 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("Nit");
-        getContentPane().add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        getContentPane().add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         txtNit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNit.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtNit.setOpaque(false);
-        getContentPane().add(txtNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 150, -1));
+        getContentPane().add(txtNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 150, -1));
 
         label7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label7.setText("telefono");
-        getContentPane().add(label7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        getContentPane().add(label7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         txtTelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtTelefono.setOpaque(false);
-        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 150, -1));
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 150, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -244,21 +244,21 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         
-        daoProveedor eDAO = new daoProveedor();
-        clsProveedor eAEliminar = new clsProveedor();
-        eAEliminar.setidp(Integer.parseInt(txtbuscado.getText()));
+        daoVendedor eDAO = new daoVendedor();
+        clsVendedor eAEliminar = new clsVendedor();
+        eAEliminar.setidv(Integer.parseInt(txtbuscado.getText()));
         eDAO.delete(eAEliminar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        daoProveedor eDAO = new daoProveedor();
-        clsProveedor eAInsertar = new clsProveedor();
-        eAInsertar.setnombrep(txtNombre.getText());
-        eAInsertar.setdireccionp(txtDireccion.getText());
-        eAInsertar.settelefonop(txtTelefono.getText());
-        eAInsertar.setnitp(txtNit.getText());
-        eAInsertar.setestadop(cbox_estado.getSelectedItem().toString());
+        daoVendedor eDAO = new daoVendedor();
+        clsVendedor eAInsertar = new clsVendedor();
+        eAInsertar.setnombrev(txtNombre.getText());
+        eAInsertar.setdireccionv(txtDireccion.getText());
+        eAInsertar.setnitv(txtNit.getText());
+        eAInsertar.settelefonov(txtTelefono.getText());
+        eAInsertar.setestadov(cbox_estado.getSelectedItem().toString());
        
         eDAO.insert(eAInsertar);
         llenadoDeTablas();
@@ -271,14 +271,15 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        daoProveedor eDAO = new daoProveedor();
-        clsProveedor eAActualizar = new clsProveedor();
-        eAActualizar.setidp(Integer.parseInt(txtbuscado.getText()));
-        eAActualizar.setnombrep(txtNombre.getText());
-        eAActualizar.setdireccionp(txtDireccion.getText());
-        eAActualizar.settelefonop(txtTelefono.getText());
-        eAActualizar.setnitp(txtNit.getText());
-        eAActualizar.setestadop(cbox_estado.getSelectedItem().toString());
+        daoVendedor eDAO = new daoVendedor();
+        clsVendedor eAActualizar = new clsVendedor();
+        eAActualizar.setidv(Integer.parseInt(txtbuscado.getText()));
+        eAActualizar.setnombrev(txtNombre.getText());
+        eAActualizar.setdireccionv(txtDireccion.getText());
+        eAActualizar.setnitv(txtNit.getText());
+        eAActualizar.settelefonov(txtTelefono.getText());
+      
+        eAActualizar.setestadov(cbox_estado.getSelectedItem().toString());
         eDAO.update(eAActualizar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -307,7 +308,7 @@ public class frmMantenimientoProveedores extends javax.swing.JInternalFrame {
         txtDireccion.setText("");
         txtNit.setText("");
         txtTelefono.setText("");
-        
+       
         cbox_estado.setSelectedIndex(0);
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);

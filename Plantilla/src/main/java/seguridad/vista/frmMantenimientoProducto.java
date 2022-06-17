@@ -135,7 +135,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Mantenimiento Clientes");
+        setTitle("Mantenimiento Productos");
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

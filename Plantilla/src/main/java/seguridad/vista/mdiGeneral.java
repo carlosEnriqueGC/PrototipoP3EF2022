@@ -46,6 +46,8 @@ public class mdiGeneral extends javax.swing.JFrame {
         mantenimientoProducto = new javax.swing.JMenuItem();
         mantenimientoLinea = new javax.swing.JMenuItem();
         mantenimientoMarca = new javax.swing.JMenuItem();
+        MantenimientoBodega = new javax.swing.JMenuItem();
+        MantenimientoVendedor = new javax.swing.JMenuItem();
         jM_MantenimientopApps = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
@@ -120,6 +122,22 @@ public class mdiGeneral extends javax.swing.JFrame {
             }
         });
         jMenu4.add(mantenimientoMarca);
+
+        MantenimientoBodega.setText("Mantemiento Bodega");
+        MantenimientoBodega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoBodegaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MantenimientoBodega);
+
+        MantenimientoVendedor.setText("Mantenimiento Vendedores");
+        MantenimientoVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoVendedorActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MantenimientoVendedor);
 
         jMenuBar1.add(jMenu4);
 
@@ -207,6 +225,26 @@ public class mdiGeneral extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mantenimientoMarcaActionPerformed
 
+    private void MantenimientoBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoBodegaActionPerformed
+        // TODO add your handling code here:
+         frmMantenimientoBodega ventana = new frmMantenimientoBodega();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
+        
+    }//GEN-LAST:event_MantenimientoBodegaActionPerformed
+
+    private void MantenimientoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoVendedorActionPerformed
+        // TODO add your handling code here:
+         frmMantenimientoVendedores ventana = new frmMantenimientoVendedores();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
+        
+    }//GEN-LAST:event_MantenimientoVendedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,8 +288,10 @@ public class mdiGeneral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MantenimientoBodega;
     private javax.swing.JMenuItem MantenimientoCliente;
     private javax.swing.JMenuItem MantenimientoProveedor;
+    private javax.swing.JMenuItem MantenimientoVendedor;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jM_MantenimientopApps;
     private javax.swing.JMenu jMenu2;
