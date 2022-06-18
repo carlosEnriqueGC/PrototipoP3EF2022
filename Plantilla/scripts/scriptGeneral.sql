@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS tbl_productos (
 	comarcapr VARCHAR(45) NOT NULL,
 	estadopr VARCHAR(45) NOT NULL,
 	existenpr VARCHAR(45) NOT NULL,
+	valorpr VARCHAR(45) NOT NULL,
 	PRIMARY KEY (idpr) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
@@ -80,5 +81,18 @@ CREATE TABLE IF NOT EXISTS tbl_bodega (
 	
 	PRIMARY KEY (idb) )
 ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_venta (
+	idven INT NOT NULL AUTO_INCREMENT,
+	productoven VARCHAR(45) NOT NULL,
+	valorpven VARCHAR(45) NOT NULL,
+	cantidadven VARCHAR(45) NOT NULL,
+	clienteven VARCHAR(45) NOT NULL,
+	valorven VARCHAR(45) NOT NULL,
+	bodegaven VARCHAR(45) NOT NULL,	
+	vendeven VARCHAR(45) NOT NULL,
+	PRIMARY KEY (idven) )
+ENGINE = InnoDB CHARACTER SET = latin1;
+
 
 

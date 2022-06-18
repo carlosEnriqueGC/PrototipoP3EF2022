@@ -6,11 +6,16 @@
 package seguridad.vista;
 
 
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import seguridad.modelo.daoBodega;
 import seguridad.controlador.clsBodega;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.net.URI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -82,10 +87,10 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVendedores = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         label6 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
         cbox_estado = new javax.swing.JComboBox<>();
+        ayuda = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -103,7 +108,7 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 95, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 95, -1));
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,18 +167,10 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablaVendedores);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 20, 574, 303));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 574, 303));
 
         jButton1.setText("jButton1");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 34, -1, -1));
-
-        jButton2.setText("Ayuda");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, -1, -1));
 
         label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label6.setText("estado");
@@ -194,6 +191,14 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cbox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 150, 20));
+
+        ayuda.setText("Ayuda");
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ayuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,23 +239,6 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
         llenadoDeTablas();
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
-                Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
-                p.waitFor();
-            } else {
-                System.out.println("La ayuda no Fue encontrada");
-            }
-            System.out.println("Correcto");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
 
@@ -269,8 +257,32 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbox_estadoActionPerformed
 
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+        // TODO add your handling code here:
+
+        //EVENTO DEL BOTON
+        ayuda.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent evento)
+                {
+
+                    try{
+
+                        Desktop.getDesktop().browse(new URI("https://drive.google.com/file/d/1kmconxHfpnv4CTMwvnUDGDctWA1uTmvZ/view?usp=sharing"));
+                    } catch (Exception e){
+                        JOptionPane.showMessageDialog(null, "No se puede abrir el archivo de ayuda, probablemente fue borrado","ERROR",JOptionPane.ERROR_MESSAGE);
+
+                    }
+
+                }
+
+            });
+
+    }//GEN-LAST:event_ayudaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ayuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -278,7 +290,6 @@ public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbox_estado;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;

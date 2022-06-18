@@ -16,12 +16,12 @@ import java.util.List;
  */
 public class daoProducto {
 
-    private static final String SQL_SELECT = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr FROM tbl_productos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_productos(nombrepr, colineapr, comarcapr, estadopr, existenpr) VALUES( ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_productos SET nombrepr=?, colineapr=?, comarcapr=?,estadopr=?, existenpr=? WHERE idpr = ?";
+    private static final String SQL_SELECT = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr, valorpr FROM tbl_productos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_productos(nombrepr, colineapr, comarcapr, estadopr, existenpr, valorpr) VALUES( ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_productos SET nombrepr=?, colineapr=?, comarcapr=?,estadopr=?, existenpr=?, valorpr=? WHERE idpr = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_productos WHERE idpr=?";
-    private static final String SQL_QUERY = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr FROM tbl_productos WHERE idpr=?";
-    private static final String SQL_QUERYN = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr FROM tbl_productos WHERE nombrepr=?";    
+    private static final String SQL_QUERY = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr, valorpr FROM tbl_productos WHERE idpr=?";
+    private static final String SQL_QUERYN = "SELECT idpr, nombrepr, colineapr, comarcapr, estadopr, existenpr, valorpr FROM tbl_productos WHERE nombrepr=?";    
 
     public List<clsProductos> select() {
         Connection conn = null;
@@ -40,7 +40,7 @@ public class daoProducto {
                 String marca = rs.getString("comarcapr");
                 String estado = rs.getString("estadopr");
                 String existe = rs.getString("existenpr");
-                
+                String valor = rs.getString("valorpr");
 
                 usuario = new clsProductos();
                 usuario.setidpr(id);
@@ -49,6 +49,7 @@ public class daoProducto {
                 usuario.setcomarcapr(marca);
                 usuario.setestadopr(estado);
                 usuario.setexistenpr(existe);
+                usuario.setvalorpr(valor);
                 usuarios.add(usuario);
             }
 
@@ -75,7 +76,7 @@ public class daoProducto {
             stmt.setString(3, usuario.getcomarcapr());
             stmt.setString(4, usuario.getestadopr());
             stmt.setString(5, usuario.getexistenpr());
-               
+            stmt.setString(6, usuario.getvalorpr());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -103,8 +104,8 @@ public class daoProducto {
             stmt.setString(3, usuario.getcomarcapr());
             stmt.setString(4, usuario.getestadopr());
             stmt.setString(5, usuario.getexistenpr());
-               
-            stmt.setInt(6, usuario.getidpr());
+             stmt.setString(6, usuario.getvalorpr());   
+            stmt.setInt(7, usuario.getidpr());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -160,7 +161,7 @@ public class daoProducto {
                 String marca = rs.getString("comarcapr");
                 String estado = rs.getString("estadopr");
                 String existe = rs.getString("existenpr");
-                
+                String valor = rs.getString("valorpr");
 
                 usuario = new clsProductos();
                 usuario.setidpr(id);
@@ -169,6 +170,7 @@ public class daoProducto {
                 usuario.setcomarcapr(marca);
                 usuario.setestadopr(estado);
                 usuario.setexistenpr(existe);
+                usuario.setvalorpr(valor);
                 
             }
             //System.out.println("Registros buscado:" + persona);
@@ -201,7 +203,7 @@ public clsProductos queryn(clsProductos usuario) {
                 String marca = rs.getString("comarcapr");
                 String estado = rs.getString("estadopr");
                 String existe = rs.getString("existenpr");
-                
+                String valor = rs.getString("valorpr");
 
                 usuario = new clsProductos();
                 usuario.setidpr(id);
@@ -210,6 +212,7 @@ public clsProductos queryn(clsProductos usuario) {
                 usuario.setcomarcapr(marca);
                 usuario.setestadopr(estado);
                 usuario.setexistenpr(existe);
+                usuario.setvalorpr(valor);
                 
             }
             //System.out.println("Registros buscado:" + persona);
