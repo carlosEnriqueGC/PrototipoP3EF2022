@@ -49,6 +49,7 @@ public class mdiGeneral extends javax.swing.JFrame {
         MantenimientoBodega = new javax.swing.JMenuItem();
         MantenimientoVendedor = new javax.swing.JMenuItem();
         jM_MantenimientopApps = new javax.swing.JMenu();
+        venta = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
 
@@ -142,6 +143,15 @@ public class mdiGeneral extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jM_MantenimientopApps.setText("Procesos");
+
+        venta.setText("venta");
+        venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ventaActionPerformed(evt);
+            }
+        });
+        jM_MantenimientopApps.add(venta);
+
         jMenuBar1.add(jM_MantenimientopApps);
 
         jMenu6.setText("Reportes");
@@ -245,6 +255,16 @@ public class mdiGeneral extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MantenimientoVendedorActionPerformed
 
+    private void ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventaActionPerformed
+        // TODO add your handling code here:
+         frmVentas ventana = new frmVentas();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);      
+        
+    }//GEN-LAST:event_ventaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -306,5 +326,6 @@ public class mdiGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuItem mantenimientoMarca;
     private javax.swing.JMenuItem mantenimientoProducto;
     private javax.swing.JMenuItem mantenimientoUsuario;
+    private javax.swing.JMenuItem venta;
     // End of variables declaration//GEN-END:variables
 }

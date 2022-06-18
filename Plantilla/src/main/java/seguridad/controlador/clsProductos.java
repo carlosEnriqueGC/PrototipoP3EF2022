@@ -16,7 +16,7 @@ public class clsProductos {
     String comarcapr;
     String estadopr;
     String existenpr;
-
+    String valorpr;
             
 
     public clsProductos(int id) {
@@ -26,13 +26,13 @@ public class clsProductos {
     public clsProductos() {
     }
 
-    public clsProductos(String nombre, String estado, String colinea, String comarca, String existen) {
+    public clsProductos(String nombre, String estado, String colinea, String comarca, String existen, String valor) {
         this.nombrepr = nombre;
         this.colineapr = colinea;
         this.comarcapr = comarca;
         this.estadopr = estado;
         this.existenpr = existen;
-         
+        this.valorpr = valor; 
     }
 
     public int getidpr() {
@@ -83,9 +83,17 @@ public class clsProductos {
         this.existenpr = existen;
     }
     
+     public String getvalorpr() {
+        return valorpr;
+    }
+
+    public void setvalorpr(String valor) {
+        this.valorpr = valor;
+    }
+    
     @Override
     public String toString() {
-       return "tbl_productos{" + "idpr=" + idpr + ", nombrepr=" + nombrepr + ", colineapr="+ colineapr +", comarcapr="+ comarcapr + ", estadopr="+ estadopr + ", existenpr="+ existenpr +'}';
+       return "tbl_productos{" + "idpr=" + idpr + ", nombrepr=" + nombrepr + ", colineapr="+ colineapr +", comarcapr="+ comarcapr + ", estadopr="+ estadopr + ", existenpr="+ existenpr + ", valorpr="+ valorpr+'}';
     }
     
 

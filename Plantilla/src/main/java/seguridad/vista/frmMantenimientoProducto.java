@@ -58,7 +58,8 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         modelo.addColumn("codigo marca");
         modelo.addColumn("estado");
         modelo.addColumn("existencias");
-        
+         modelo.addColumn("valor");
+         
         daoProducto mDAO = new daoProducto();
         List<clsProductos> m = mDAO.select();
         tablaVendedores.setModel(modelo);
@@ -70,7 +71,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
             dato[3] = m.get(i).getcomarcapr();
             dato[4] = m.get(i).getestadopr();
             dato[5] = m.get(i).getexistenpr();
-        
+        dato[6] = m.get(i).getvalorpr();
 
             modelo.addRow(dato);
         }
@@ -86,6 +87,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         cbox_marca.setSelectedItem(cAConsultar.getcomarcapr());
         cbox_estado.setSelectedItem(cAConsultar.getestadopr());
         txtExistencias.setText(cAConsultar.getexistenpr());
+        txtValor.setText(cAConsultar.getvalorpr());
     }
 
     public frmMantenimientoProducto() {
@@ -128,6 +130,8 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         label8 = new javax.swing.JLabel();
         cbox_marca = new javax.swing.JComboBox<>();
         cbox_linea = new javax.swing.JComboBox<>();
+        txtValor = new javax.swing.JTextField();
+        label9 = new javax.swing.JLabel();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -191,11 +195,11 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "codigo ", "nombre", "codigo linea", "codigo marca", "estado", "existencias"
+                "codigo ", "nombre", "codigo linea", "codigo marca", "estado", "existencias", "valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -203,6 +207,9 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tablaVendedores);
+        if (tablaVendedores.getColumnModel().getColumnCount() > 0) {
+            tablaVendedores.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 30, 640, 303));
 
@@ -270,6 +277,15 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         });
         getContentPane().add(cbox_linea, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 150, 20));
 
+        txtValor.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtValor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtValor.setOpaque(false);
+        getContentPane().add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 150, -1));
+
+        label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label9.setText("valor");
+        getContentPane().add(label9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -291,6 +307,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         eAInsertar.setcomarcapr(cbox_marca.getSelectedItem().toString());
         eAInsertar.setestadopr(cbox_estado.getSelectedItem().toString());
         eAInsertar.setexistenpr(txtExistencias.getText());
+        eAInsertar.setvalorpr(txtValor.getText());
        
         eDAO.insert(eAInsertar);
         llenadoDeTablas();
@@ -311,6 +328,7 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
         eAActualizar.setcomarcapr(cbox_marca.getSelectedItem().toString());
         eAActualizar.setestadopr(cbox_estado.getSelectedItem().toString());
         eAActualizar.setexistenpr(txtExistencias.getText());
+        eAActualizar.setvalorpr(txtValor.getText());
         eDAO.update(eAActualizar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -379,11 +397,13 @@ public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label8;
+    private javax.swing.JLabel label9;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaVendedores;
     private javax.swing.JTextField txtExistencias;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtValor;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }
